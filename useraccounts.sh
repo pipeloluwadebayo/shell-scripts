@@ -23,7 +23,8 @@ read -p 'Enter your username: '  USER_NAME
 read -p 'Enter your fullname: ' FULL_NAME
 
 # Prompt for password
-read -p 'Enter your password: ' PASSWORD
+read -sp 'Enter your password: ' PASSWORD
+echo
 
 echo 'You will be prompted to set a new password on your first login'
 
@@ -50,9 +51,15 @@ fi
 # Force password change on first login
 passwd -e ${USER_NAME}
 
-chage -M 30 ${USER_NAME}
+# Set password to expire after 30 days(both the chage and passwd commands can be used to achieve this)
+#chage -M 30 ${USER_NAME}
 
-chage -W 7 ${USER_NAME}
+passwd -x 30 ${USER_NAME}
+
+# Set 7 days warning for password expiry 
+#chage -W 7 ${USER_NAME}
+
+passwd -w 7 ${USER_NAME}
 
 # Display user information
 
