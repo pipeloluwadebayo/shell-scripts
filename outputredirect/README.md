@@ -1,0 +1,1 @@
+- This script redirects all standard output and standard error from the password generating script, for a cleaner experience.
